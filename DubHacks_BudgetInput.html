@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<title>Your first HTML form, styled</title>
+		<style>
+			form {
+				/* Just to center the form on the page */
+				margin: 0 auto;
+				width: 600px;
+				/* To see the outline of the form */
+				padding: 1em;
+				border: 4px solid #0cc;
+				border-radius: 1em;
+			}
+
+			ul {
+				list-style: none;
+				padding: 0;
+				margin: 0;
+			}
+
+			form li + li {
+				margin-top: 1em;
+			}
+
+			/*-- header {
+				--- To make sure that all labels have the same size and are properly aligned ---
+				display: inline-block;
+				font: 1.5em sans-serif;
+				width: 200px;
+				text-align: center;
+			}*/
+
+			label {
+				/* To make sure that all labels have the same size and are properly aligned */
+				display: inline-block;
+				font: 1.25em serif;
+				width: 150px;
+				text-align: right;
+			}
+
+			input,
+			textarea {
+				/* To make sure that all text fields have the same font settings By default, textareas have a monospace font */
+				font: 1.25em sans-serif;
+				/* To give the same size to all text fields */
+				width: 300px;
+				box-sizing: border-box; /* To harmonize the look & feel of text field border */
+				border: 2px solid #999;
+			}
+
+			input:focus,
+			textarea:focus {
+				/* To give a little highlight on active elements */
+				border-color: #000;
+			}
+
+			textarea {
+				/* To properly align multiline text fields with their labels */
+				vertical-align: top;
+				/* To give enough room to type some text */
+				height: 5em;
+			}
+
+			.button {
+				/* To position the buttons to the same position of the text fields */
+				padding-left: 225px;
+				/* same size as the label elements */
+			}
+
+			button {
+				/* This extra margin represent roughly the same space as the space between the labels and their text fields */
+				margin-left: 0.5em;
+				font: 1em serif;
+			}
+		</style>
+	</head>
+
+	<body>
+		<form action="/my-handling-form-page" method="post">
+			<ul>
+				<!-- <li>
+					<header for="quantity">Overall Budget:</label>
+					<input type="number" id="Budget_quantity" name="Budget_quantity" /> 
+				</li> -->
+				<li>
+					<label for="msg">Overall Budget:</label>
+					<textarea disabled></textarea>
+				</li>
+
+				<!-- Text Inputs -->
+				<li>
+					<label for="quantity">Rent:</label>
+					<input type="number" id="Rent_quantity" name="Rent_quantity" /> 
+				</li>
+				<li>
+					<label for="quantity">Gas:</label>
+					<input type="number" id="Gas_quantity" name="Gas_quantity" /> 
+				</li>
+				<li>
+					<label for="quantity">Groceries:</label>
+					<input type="number" id="Groceries_quantity" name="Gas_quantity" /> 
+				</li>
+				<li>
+					<label for="quantity">Loans:</label>
+					<input type="number" id="Loans_quantity" name="Gas_quantity" /> 
+				</li>
+				<li>
+					<label for="quantity">Restaurants:</label>
+					<input type="number" id="Restaurants_quantity" name="Gas_quantity" /> 
+				</li>
+				<li>
+					<label for="quantity">Lifestyle:</label>
+					<input type="number" id="Lifestyle_quantity" name="Gas_quantity" /> 
+				</li>
+				<li>
+					<label for="quantity">Savings:</label>
+					<input type="number" id="Savings_quantity" name="Gas_quantity" /> 
+				</li>
+				<li>
+					<label for="quantity">Other:</label>
+					<input type="number" id="Other_quantity" name="Gas_quantity" /> 
+				</li>
+
+				<!-- Submit Button -->
+				<li class="button">
+					<button type="submit">Submit Your Budget</button>
+				</li>
+			</ul>
+		</form>
+	</body>
+</html>
