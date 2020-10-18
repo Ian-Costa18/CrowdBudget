@@ -33,13 +33,24 @@ def get_budgets(location_id):
             except KeyError as e:
                 print(f"No data for {item} in {location_id}")
 
+    avg_budget = {
+        "Rent": 0,
+        "Bills": 0,
+        "Gas": 0,
+        "Groceries": 0,
+        "Loans": 0,
+        "Restaurants": 0,
+        "Lifestyle": 0,
+        "Savings": 0,
+        "Other": 0
+    }
     for key, value in budget_items.items():
         try:
-            budget_items[key] = int(value[0] // value[1])
+            avg_budget[key] = int(value[0] // value[1])
         except ZeroDivisionError as e:
             print(f"No data for {key} in {location_id}")
 
-    return budget_items
+    return avg_budget
 
 def add_to_db(state, data):
     state = db.collection(u"locations").document(state)
