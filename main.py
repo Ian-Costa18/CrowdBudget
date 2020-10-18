@@ -1,4 +1,4 @@
-from flask import Flask, request
+from flask import Flask, request, jsonify
 from google.cloud import firestore
 
 
@@ -9,18 +9,38 @@ def get_budgets(location_id):
     location_ref = db.collection(u"locations")
     state = location_ref.document(location_id)
     budgets = state.collection(u"budgets")
+    budget_lst = []
     for doc in budgets.stream():
-        print(f"{doc.id}: {doc.to_dict()}")
+        budget_lst.append(doc.to_dict())
+    return budget_lst
+
+def add_to_db(state, id, data):
+    state = db.collection(u"locations").document(state)
+    if not state.get().exists:
+        return 1
+    budgets = state.collection(u"budgets")
+
+    budgets.document(id).set(data)
+    return 0
 
 
-@app.route("/", methods=["GET", "POST"])
+@app.route("/", methods=["POST"])
 def main_page():
     if request.method == "POST":
-        return request.values.get("name")
+        args = request.values
+        test = add_to_db(args["state"], args["name"], args)
+        if test == 1:
+            return "Failed, invalid state."
+        return "Success?"
 
-    return "Hello World!\nNot a post :("
+    return "Not a post :("
+
+@app.route("/budgets", methods=["GET"])
+def budget_api():
+    if request.method == "GET":
+        loc = str(request.args.get("location"))
+        return jsonify(get_budgets(loc))
 
 if __name__ == "__main__":
-    get_budgets("RI")
-    #app.run()
+    app.run()
 
