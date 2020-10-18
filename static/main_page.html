@@ -10,7 +10,7 @@
 				width: 600px;
 				/* To see the outline of the form */
 				padding: 1em;
-				border: 4px solid #0cc;
+				border: 5px solid #0cc;
 				border-radius: 1em;
 			}
 
@@ -27,8 +27,8 @@
 			header {
 				/* To make sure that all labels have the same size and are properly aligned */
 				display: inline-block;
-				font: 1.5em serif;
-				width: 200px;
+				font: 2em serif;
+				width: 600px;
 				text-align: center;
 			}
 
@@ -65,15 +65,17 @@
 
 			.button {
 				/* To position the buttons to the same position of the text fields */
-				padding-left: 225px;
+				padding-left: 200px;
 				/* same size as the label elements */
 			}
 
 			button {
 				/* This extra margin represent roughly the same space as the space between the labels and their text fields */
 				margin-left: 0.5em;
-				font: 1em serif;
+				font: 1.15em serif;
 			}
+
+			
 		</style>
 
 		<!-- Adding values to Overall Budget -->
@@ -96,7 +98,7 @@
 
 	<body>
 		<form action="/submit" method="post">
-			<body>
+			<body style="background-color:powderblue;">
 
 			<ul>
 				<!-- <li>
@@ -108,6 +110,10 @@
 					<textarea disabled id="overall_budget">0</textarea>
 					
 				</li>-->
+				<li>
+					<header for="msg">CrowdBudget</header>
+					
+				</li>
 
 				<!-- Text Inputs -->
 				<li>
@@ -148,8 +154,8 @@
 				</li>
 				<li>
 					<label for="msg">State:</label>
-						
-			<select name="States" id="cars">
+					
+			<select name="States" id="states">
     			<option value="AL">Alabama</option>
 			    <option value="AK">Alaska</option>
 			    <option value="AZ">Arizona</option>
