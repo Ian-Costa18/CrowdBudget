@@ -1,4 +1,4 @@
-from flask import Flask, request, jsonify, send_from_directory
+from flask import Flask, request, jsonify, url_for, redirect
 from google.cloud import firestore
 
 
@@ -77,7 +77,7 @@ def submit():
         test = add_to_db(args["state"], args)
         if test == 1:
             return "Failed, invalid state."
-        return "Success?"
+        return redirect(url_for('map_page'))
 
     return "Not a post :("
 
