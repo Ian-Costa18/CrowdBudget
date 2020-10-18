@@ -40,6 +40,10 @@
 				text-align: right;
 			}
 
+			input { 
+    			text-align: center; 
+			}
+
 			input,
 			textarea {
 				/* To make sure that all text fields have the same font settings By default, textareas have a monospace font */
@@ -78,22 +82,25 @@
 			
 		</style>
 
-		<!-- Adding values to Overall Budget -->
-		<!--<script type="text/javascript"> 
-				budgets = ["Rent_quantity", "Bills_quantity", "Gas_quantity", "Groceries_quantity", "Loans_quantity", "Restaurants_quantity", "Lifestyle_quantity", "Savings_quantity", "Other_quantity"];
- 			
- 				function UpdateTotal() {
- 					
- 					total = 0;
+		<script type="text/javascript">
+            function setCookie(name, value) {
+                document.cookie=name + "=" + escape(value) + "; path=/;";
+              }
+            function putCookie(form) {
+                setCookie("Rent", form[0].Rent.value);
+                setCookie("Bills", form[0].Bills.value);
+                setCookie("Gas", form[0].Gas.value);
+                setCookie("Groceries", form[0].Groceries.value);
+                setCookie("Loans", form[0].Loans.value);
+                setCookie("Restaurants", form[0].Restaurants.value);
+                setCookie("Lifestyle", form[0].Lifestyle.value);
+                setCookie("Savings", form[0].Savings.value);
+                setCookie("Other", form[0].Other.value);
+                return true;
+            }
+            console.log(document.cookie.split(";"))
+        </script>
 
- 					for (i=0; i<budgets.length; i++) {
- 						var budget_num = parseInt(document.getElementById(budgets[i]).value, 10);
- 						total = total + budget_num;
- 					}
- 					document.getElementById("overall_budget").value = total;
-
- 				}
-		</script>-->
 	</head>
 
 	<body>
@@ -101,56 +108,48 @@
 			<body style="background-color:powderblue;">
 
 			<ul>
-				<!-- <li>
-					<header for="quantity">Overall Budget:</label>
-					<input type="number" id="Budget_quantity" name="Budget_quantity" /> 
-				</li> -->
-				<!--<li>
-					<header for="msg">Overall Monthly Budget:</header>
-					<textarea disabled id="overall_budget">0</textarea>
-					
-				</li>-->
 				<li>
 					<header for="msg">CrowdBudget</header>
 					
 				</li>
 
 				<!-- Text Inputs -->
+
 				<li>
 					<label for="quantity">Rent:</label>
-					<input type="number" id="Rent" name="Rent" /> 
+					<input type="text" id="Rent" name="Rent" /> 
 				</li>
 				<li>
 					<label for="quantity">Bills:</label>
-					<input type="number" id="Bills" name="Bills" /> 
+					<input type="text" id="Bills" name="Bills" /> 
 				</li>
 				<li>
 					<label for="quantity">Gas:</label>
-					<input type="number" id="Gas" name="Gas" /> 
+					<input type="text" id="Gas" name="Gas" /> 
 				</li>
 				<li>
 					<label for="quantity">Groceries:</label>
-					<input type="number" id="Groceries" name="Groceries" /> 
+					<input type="text" id="Groceries" name="Groceries" /> 
 				</li>
 				<li>
 					<label for="quantity">Loans:</label>
-					<input type="number" id="Loans" name="Loans" /> 
+					<input type="text" id="Loans" name="Loans" /> 
 				</li>
 				<li>
 					<label for="quantity">Restaurants:</label>
-					<input type="number" id="Restaurants" name="Restaurants" /> 
+					<input type="text" id="Restaurants" name="Restaurants" /> 
 				</li>
 				<li>
 					<label for="quantity">Lifestyle:</label>
-					<input type="number" id="Lifestyle" name="Lifestyle" /> 
+					<input type="text" id="Lifestyle" name="Lifestyle" /> 
 				</li>
 				<li>
 					<label for="quantity">Savings:</label>
-					<input type="number" id="Savings" name="Savings" /> 
+					<input type="text" id="Savings" name="Savings" /> 
 				</li>
 				<li>
 					<label for="quantity">Other:</label>
-					<input type="number" id="Other" name="Other" /> 
+					<input type="text" id="Other" name="Other" /> 
 				</li>
 				<li>
 					<label for="msg">State:</label>
@@ -210,9 +209,9 @@
   			<br><br>
 			</li>
 
-				<!-- Submit Button -->
+				<!-- Submit Button w/ Cookies -->
 				<li class="button">
-					<button type="submit">Submit Your Budget</button>
+					<button type="submit" onclick="putCookie(document.getElementsByTagName('form'));">Submit Your Budget</button>
 				</li>
 			</ul>
 		</form>
