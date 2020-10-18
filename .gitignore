@@ -127,3 +127,6 @@ dmypy.json
 
 # Pyre type checker
 .pyre/
+
+# Credentials
+crowdbudget-a5991e488c95.json
