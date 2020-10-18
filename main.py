@@ -55,6 +55,10 @@ def add_to_db(state, data):
 def main_page():
     return app.send_static_file("main_page.html")
 
+@app.route("/map", methods=["GET"])
+def map_page():
+    return app.send_static_file("map.html")
+
 @app.route("/submit", methods=["POST"])
 def submit():
     if request.method == "POST":
