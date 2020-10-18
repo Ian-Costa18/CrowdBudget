@@ -2,7 +2,7 @@
 <html>
 	<head>
 		<meta charset="utf-8" />
-		<title>Your first HTML form, styled</title>
+		<title>CrowdBudget</title>
 		<style>
 			form {
 				/* Just to center the form on the page */
@@ -75,6 +75,23 @@
 				font: 1em serif;
 			}
 		</style>
+		<script type="text/javascript"> 
+				budgets = ["Rent_quantity", "Bills_quantity", "Gas_quantity", "Groceries_quantity", "Loans_quantity", "Restaurants_quantity", "Lifestyle_quantity", "Savings_quantity", "Other_quantity"];
+ 				//document.getElementById("overall_budget").value = 0;
+ 				//budgets.forEach(element => document.getElementById(element) = 0);
+ 			
+ 				function UpdateTotal() {
+ 					
+ 					total = 0;
+
+ 					for (i=0; i<budgets.length; i++) {
+ 						var budget_num = parseInt(document.getElementById(budgets[i]).value, 10);
+ 						total = total + budget_num;
+ 					}
+ 					document.getElementById("overall_budget").value = total;
+
+ 				}
+		</script>
 	</head>
 
 	<body>
@@ -86,42 +103,51 @@
 				</li> -->
 				<li>
 					<label for="msg">Overall Budget:</label>
-					<textarea disabled></textarea>
+					<textarea disabled id="overall_budget">0</textarea>
+					
 				</li>
 
 				<!-- Text Inputs -->
 				<li>
 					<label for="quantity">Rent:</label>
-					<input type="number" id="Rent_quantity" name="Rent_quantity" /> 
+					<input type="number" id="Rent_quantity" name="Rent_quantity" onkeypress="UpdateTotal()" /> 
+				</li>
+				<li>
+					<label for="quantity">Bills:</label>
+					<input type="number" id="Bills_quantity" name="Gas_quantity" onkeypress="UpdateTotal()" /> 
 				</li>
 				<li>
 					<label for="quantity">Gas:</label>
-					<input type="number" id="Gas_quantity" name="Gas_quantity" /> 
+					<input type="number" id="Gas_quantity" name="Gas_quantity" onkeypress="UpdateTotal()" /> 
 				</li>
 				<li>
 					<label for="quantity">Groceries:</label>
-					<input type="number" id="Groceries_quantity" name="Gas_quantity" /> 
+					<input type="number" id="Groceries_quantity" name="Gas_quantity" onkeypress="UpdateTotal()" /> 
 				</li>
 				<li>
 					<label for="quantity">Loans:</label>
-					<input type="number" id="Loans_quantity" name="Gas_quantity" /> 
+					<input type="number" id="Loans_quantity" name="Gas_quantity" onkeypress="UpdateTotal()" /> 
 				</li>
 				<li>
 					<label for="quantity">Restaurants:</label>
-					<input type="number" id="Restaurants_quantity" name="Gas_quantity" /> 
+					<input type="number" id="Restaurants_quantity" name="Gas_quantity" onkeypress="UpdateTotal()" /> 
 				</li>
 				<li>
 					<label for="quantity">Lifestyle:</label>
-					<input type="number" id="Lifestyle_quantity" name="Gas_quantity" /> 
+					<input type="number" id="Lifestyle_quantity" name="Gas_quantity" onkeypress="UpdateTotal()" /> 
 				</li>
 				<li>
 					<label for="quantity">Savings:</label>
-					<input type="number" id="Savings_quantity" name="Gas_quantity" /> 
+					<input type="number" id="Savings_quantity" name="Gas_quantity" onkeypress="UpdateTotal()" /> 
 				</li>
 				<li>
 					<label for="quantity">Other:</label>
-					<input type="number" id="Other_quantity" name="Gas_quantity" /> 
+					<input type="number" id="Other_quantity" name="Gas_quantity" onkeypress="UpdateTotal()" /> 
 				</li>
+
+				<!-- Adding values to Overall Budget -->
+				
+
 
 				<!-- Submit Button -->
 				<li class="button">
