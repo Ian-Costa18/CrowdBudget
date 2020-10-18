@@ -76,7 +76,7 @@ def submit():
         args = request.values
         test = add_to_db(args["state"], args)
         if test == 1:
-            return "Failed, invalid state."
+            return redirect(url_for('map_page'))
         return redirect(url_for('map_page'))
 
     return "Not a post :("
