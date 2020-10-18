@@ -1,6 +1,5 @@
 from flask import Flask, request, jsonify, send_from_directory
 from google.cloud import firestore
-from os import getcwd
 
 
 app = Flask(__name__)
@@ -13,7 +12,34 @@ def get_budgets(location_id):
     budget_lst = []
     for doc in budgets.stream():
         budget_lst.append(doc.to_dict())
-    return budget_lst
+
+    budget_items = {
+        "Rent": [0, 0],
+        "Bills": [0, 0],
+        "Gas": [0, 0],
+        "Groceries": [0, 0],
+        "Loans": [0, 0],
+        "Restaurants": [0, 0],
+        "Lifestyle": [0, 0],
+        "Savings": [0, 0],
+        "Other": [0, 0]
+    }
+
+    for budget in budget_lst:
+        for item in budget_items.keys():
+            try:
+                budget_items[item][0] += int(budget[item])
+                budget_items[item][1] += 1
+            except KeyError as e:
+                print(f"No data for {item} in {location_id}")
+
+    for key, value in budget_items.items():
+        try:
+            budget_items[key] = int(value[0] // value[1])
+        except ZeroDivisionError as e:
+            print(f"No data for {key} in {location_id}")
+
+    return budget_items
 
 def add_to_db(state, data):
     state = db.collection(u"locations").document(state)
@@ -44,7 +70,7 @@ def submit():
 def budget_api():
     if request.method == "GET":
         loc = str(request.args.get("location"))
-        return jsonify(get_budgets(loc))
+        return jsonify(get_budgets(loc.upper()))
 
 if __name__ == "__main__":
     app.run()
